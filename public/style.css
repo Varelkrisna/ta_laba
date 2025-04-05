@@ -1,0 +1,53 @@
+.btn-custom {
+    font-size: 24px;  /* Ukuran teks lebih besar */
+    padding: 30px;    /* Padding lebih besar agar tombol makin tinggi */
+    width: 20%;      /* Lebar penuh */
+    border-radius: 30px; /* Agar lebih estetik */
+    background: #a09f9f;
+}
+
+
+.profile-card {
+    width: 250px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+    text-align: center;
+    position: relative;
+}
+
+
+.profile-card .delete-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.form-control {
+    text-align: center;
+    font-weight: bold;
+}
+
+.card-container {
+    display: flex;
+    gap: 20px;
+}
+
+.empty-card {
+    width: 250px;
+    height: 300px;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+}
+
+.profile-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.file-input {
+    display: none;
+}
