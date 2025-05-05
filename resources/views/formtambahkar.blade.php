@@ -12,19 +12,17 @@
             </div>
 
             <!-- Body -->
+            <form action="/inserttambahkar" method="post">
+                @csrf
             <div class="card-body text-center bg-light">
 
                 <label class="form-label fw-bold">Nama</label>
-                <input type="text" class="form-control text-center mb-2" style="border-radius: 10px;" placeholder="Masukkan Nama">
+                <input type="text" class="form-control text-center mb-2" name="nama" style="border-radius: 10px;" placeholder="Masukkan Nama">
 
-                <label class="form-label fw-bold">Alamat</label>
-                <input type="text" class="form-control text-center mb-2" style="border-radius: 10px;" placeholder="Masukkan Alamat">
+                <label class="form-label fw-bold">Gaji</label>
+                <input type="number" class="form-control text-center mb-2" name="gaji" style="border-radius: 10px;" placeholder="Masukkan Alamat">
 
-                <label class="form-label fw-bold">No. HP</label>
-                <input type="text" class="form-control text-center mb-3" style="border-radius: 10px;" placeholder="Masukkan No HP">
-
-
-                <button class="btn btn-primary w-50" style="border-radius: 10px;">Save</button>
+                <button type="submit" class="btn btn-primary w-50" style="border-radius: 10px;">Save</button>
             </div>
         </div>
     </div>

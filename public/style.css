@@ -3,7 +3,7 @@
     padding: 30px;    /* Padding lebih besar agar tombol makin tinggi */
     width: 20%;      /* Lebar penuh */
     border-radius: 30px; /* Agar lebih estetik */
-    background: #a09f9f;
+    background: #9f9e9e;
 }
 
 
@@ -50,4 +50,24 @@
 }
 .file-input {
     display: none;
+}
+
+.card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  }
+
+  .btn-custom-animated {
+    transition: all 0.3s ease-in-out;
+    padding: 0.6rem 1.2rem;
+    border-radius: 1rem;
+    font-weight: 500;
+}
+
+.btn-custom-animated:hover {
+    transform: scale(1.05);
+    background-color: #6b6b6b; /* Tetap biru tapi bisa diganti */
+    box-shadow: 0 30px 30px rgba(121, 121, 121, 0.4);
+;      /* Lebar penuh */
+     /* Agar lebih estetik */
 }

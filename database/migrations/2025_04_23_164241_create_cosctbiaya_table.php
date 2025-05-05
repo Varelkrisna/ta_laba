@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateStokopnameTable extends Migration
+class CreateCosctbiayaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateStokopnameTable extends Migration
      */
     public function up()
     {
-        Schema::create('stokopname', function (Blueprint $table) {
+        Schema::create('cosctbiaya', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal_opname');
-            $table->string('nama_produk');
-            $table->integer('stok');
-            $table->integer('stok_akhir');
-            $table->String('keterangan')->nullable();
+            $table->foreignId('id_kategoribiaya')->references('id')->on('kategoribiaya')->onDelete('cascade');
+            $table->date('tanggal_bayar');
+            $table->integer('nominal');
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateStokopnameTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stokopname');
+        Schema::dropIfExists('cosctbiaya');
     }
 }

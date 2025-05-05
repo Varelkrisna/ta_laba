@@ -66,10 +66,15 @@
           <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
             <i class="bi bi-gem"></i><span>Stok</span><i class="bi bi-chevron-down ms-auto"></i>
           </a>
-          <ul id="icons-nav" class="nav-content collapse {{ Request::is('inputstok', 'stokopname', 'pembelian', 'penjualan') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+          <ul id="icons-nav" class="nav-content collapse {{ Request::is('tambahkategori','inputstok', 'stokopname', 'pembelian', 'penjualan') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
+            <li>
+                <a href="/tambahkategori" class="{{ Request::is('tambahkategori') ? 'active' : '' }}">
+                  <i class="bi bi-circle"></i><span>Tambah Kategori</span>
+                </a>
+              </li>
             <li>
               <a href="/inputstok" class="{{ Request::is('inputstok') ? 'active' : '' }}">
-                <i class="bi bi-circle"></i><span>Input Stok Baru</span>
+                <i class="bi bi-circle"></i><span>Tambah Produk Baru</span>
               </a>
             </li>
             <li>
@@ -93,20 +98,20 @@
         <li class="nav-item">
             <a class="nav-link {{ Request::is('tambahsupplier') ? 'active' : 'collapsed' }}" href="/tambahsupplier">
               <i class="bi bi-plus-circle"></i>
-              <span>Create Supplier </span>
+              <span>Tambah Supplier </span>
             </a>
           </li>
         <li class="nav-item">
-            <a class="nav-link {{ Request::is('cosct') || Request::is('cosctbiaya') || Request::is('cosctgaji') ? 'active' : 'collapsed' }}" href="/cosct">
+            <a class="nav-link {{ Request::is('cosct') || Request::is('cosctbiaya') || Request::is('cosctgaji') || Request::is('listmekanik') || Request::is('formtambahkar') || Request::is('inputgaji') || Request::is('daftarcosctbiaya') || Request::is('tambahkategoribiaya')  ? 'active' : 'collapsed' }}" href="/cosct">
                 <i class="bi bi-person"></i>
-            <span>Costs</span>
+            <span>Biaya</span>
           </a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link {{ Request::is('report') ? 'active' : 'collapsed' }}" href="/report">
             <i class="bi bi-question-circle"></i>
-            <span>Reports</span>
+            <span>Laporan</span>
           </a>
         </li>
       </ul>
@@ -133,5 +138,6 @@
   <script src="assets/js/main.js"></script>
   @include('layouts.header')
 </body>
+@stack('scripts')
 
 </html>

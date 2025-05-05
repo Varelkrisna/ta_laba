@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInputstoksTable extends Migration
+class CreateKategoribiayaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,12 @@ class CreateInputstoksTable extends Migration
      */
     public function up()
     {
-        Schema::create('inputstoks', function (Blueprint $table) {
+        Schema::create('kategoribiaya', function (Blueprint $table) {
             $table->id();
-            $table->string('kategori');
-            $table->string('sub_kategori');
-            $table->string('nama_produk');
-            $table->integer('stok');
-            $table->integer('harga_jual');
-            $table->integer('harga_beli');
+            $table->String('nama_kategoribiaya');
             $table->timestamps();
         });
-    } 
+    }
 
     /**
      * Reverse the migrations.
@@ -32,6 +27,6 @@ class CreateInputstoksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inputstoks');
+        Schema::dropIfExists('kategoribiaya');
     }
 }

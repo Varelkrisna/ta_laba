@@ -8,18 +8,29 @@
 
 
         <div class="card mb-5 px-4 py-3">
-    <form action="/updateinputstok/{{ $data->id }}" method="post" enctype="multipart/form-data">
+    <form action="/updatestokopname/{{ $data->id }}" method="post" enctype="multipart/form-data">
 
     <div class="row">
         @csrf
         <div class="col-md-6">
-            <label for="kategori" class="form-label">Kategori</label>
-            <input type="text" name="kategori" class="form-control" value="{{ $data->kategori }}">
+            <label class="form-label fw-bold">Kategori</label>
+            <select class="form-select" name="id_kategori" id="kategoriSelect">
+                <option disabled {{ !$data->subkategori ? 'selected' : '' }}>Pilih Kategori</option>
+                @foreach ($kategori as $kt)
+                    <option value="{{ $kt->id }}" {{ $kt->id == $data->subkategori->tambahkategori->id ? 'selected' : '' }}>
+                        {{ $kt->nama_kategori }}
+                    </option>
+                @endforeach
+            </select>
+
         </div>
 
         <div class="col-md-6">
-            <label for="subkategori" class="form-label">Sub Kategori</label>
-            <input type="text" name="sub_kategori" class="form-control" value="{{ $data->sub_kategori }}">
+            <label class="form-label fw-bold">SubKategori</label>
+            <select class="form-select" name="id_subkategori" id="subkategoriSelect">
+                <option value="">Pilih SubKategori</option>
+            </select>
+
         </div>
 
         <div class="col-md-6 mt-3">
@@ -50,4 +61,35 @@
 </div>
 </div>
         </main>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Saat halaman dimuat, auto load subkategori berdasarkan kategori yg sedang terpilih
+        let currentKategoriId = $('#kategoriSelect').val();
+        let selectedSubkategoriId = {{ $data->id_subkategori }};
+        if (currentKategoriId) {
+            loadSubkategori(currentKategoriId, selectedSubkategoriId);
+        }
+
+        $('#kategoriSelect').on('change', function () {
+            let kategoriId = $(this).val();
+            loadSubkategori(kategoriId);
+        });
+
+        function loadSubkategori(kategoriId, selected = null) {
+            $.ajax({
+                url: '/subkategori/' + kategoriId,
+                type: 'GET',
+                success: function (data) {
+                    $('#subkategoriSelect').empty().append('<option value="">Pilih SubKategori</option>');
+                    $.each(data, function (index, sub) {
+                        let selectedAttr = (sub.id == selected) ? 'selected' : '';
+                        $('#subkategoriSelect').append('<option value="' + sub.id + '" ' + selectedAttr + '>' + sub.sub_kategori + '</option>');
+                    });
+                }
+            });
+        }
+    });
+</script>
+
 @endsection

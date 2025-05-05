@@ -27,6 +27,11 @@ Route::get('/dashboard', function () {
     ]);
 });
 
+//TAMBAH KATEGORI
+Route::get('/tambahkategori', [pageController::class, 'tambahkategori'])->name('tambahkategori');
+Route::post('/tambahkategori', [pageController::class, 'kirimkategori'])->name('kirimkategori');
+Route::post('/tambahsubkategori', [pageController::class, 'kirimsubkategori'])->name('kirimsubkategori');
+
 // INPUT STOK
 Route::get('/inputstok', [pageController::class, 'inputstok'])->name('inputstok');
 Route::get('/forminputstok', [pageController::class, 'forminputstok'])->name('forminputstok');
@@ -35,10 +40,44 @@ Route::get('/editinputstok/{id}', [PageController::class, 'editinputstok'])->nam
 Route::post('/updateinputstok/{id}', [pageController::class, 'updateinputstok'])->name('updateinputstok');
 Route::get('/delete/{id}', [pageController::class, 'delete'])->name('delete');
 
+Route::get('/subkategori/{id}', [pageController::class, 'getsubkategori'])->name('getsubkategori');
+
+
 // STOK OPNAME
 Route::get('/stokopname', [pageController::class, 'stokopname'])->name('stokopname');
 Route::get('/formstokopname', [pageController::class, 'formstokopname'])->name('formstokopname');
 Route::post('/insertstokopname', [pageController::class, 'insertstokopname'])->name('insertstokopname');
+Route::get('/editstokopname/{tanggal_opname}', [pageController::class, 'editstokopname'])->name('editstokopname');
+Route::post('/updatestokopname/{tanggal_opname}', [pageController::class, 'updatestokopname'])->name('updatestokopname');
+Route::get('/deletestokopname/{tanggal_opname}', [pageController::class, 'deletestokopname'])->name('deletestokopname');
+Route::get('/stokopname/detail/{tanggal_opname}', [pageController::class, 'showstokopnamedetail'])->name('showstokopnamedetail');
+
+//TAMBAH SUPPLIER
+Route::get('/tambahsupplier', [pageController::class, 'tambahsupplier'])->name('tambahsupplier');
+Route::get('/formtambahsup', [pageController::class, 'formtambahsup'])->name('formtambahsup');
+Route::post('/inserttambahsup', [pageController::class, 'inserttambahsup'])->name('inserttambahsup');
+
+
+//BIAYA KESELURUHAN
+Route::get('/listmekanik', [pageController::class, 'listmekanik'])->name('listmekanik');
+Route::get('/formtambahkar', [pageController::class, 'formtambahkar'])->name('formtambahkar');
+Route::post('/inserttambahkar', [pageController::class, 'inserttambahkar'])->name('inserttambahkar');
+Route::delete('/deletekaryawan/{id}', [pageController::class, 'deletekaryawan'])->name('deletekaryawan');
+Route::get('/inputgaji', [pageController::class, 'inputgaji'])->name('inputgaji');
+Route::post('/insertgajikaryawan', [pageController::class, 'insertgajikaryawan'])->name('insertgajikaryawan');
+Route::get('/cosctgaji/detail/{tanggal_gaji}', [pageController::class, 'showgajidetail'])->name('showgajidetail');
+Route::get('/deletegaji/{tanggal_gaji}', [pageController::class, 'deletegaji'])->name('deletegaji');
+
+Route::get('/cosctbiaya', [pageController::class, 'cosctbiaya'])->name('cosctbiaya');
+Route::get('/daftarcosctbiaya', [pageController::class, 'daftarcosctbiaya'])->name('daftarcosctbiaya');
+Route::get('/deletebiaya/{tanggal_bayar}', [pageController::class, 'deletebiaya'])->name('deletebiaya');
+Route::get('/detailcosctbiaya/detail/{tanggal_bayar}', [pageController::class, 'detailcosctbiaya'])->name('detailcosctbiaya');
+Route::post('/insertbiayaoprasional', [pageController::class, 'insertbiayaoprasional'])->name('insertbiayaoprasional');
+Route::get('/cosctgaji', [pageController::class, 'cosctgaji'])->name('cosctgaji');
+Route::get('/cosct', [pageController::class, 'cosct'])->name('cosct');
+Route::get('/tambahkategoribiaya', [pageController::class, 'tambahkategoribiaya'])->name('tambahkategoribiaya');
+Route::post('/cosctbiaya', [pageController::class, 'kirimkategoribiaya'])->name('kirimkategoribiaya');
+
 
 //PEMBELIAN
 Route::get('/pembelian', function () {
@@ -52,11 +91,7 @@ Route::get('/penjualan', function () {
     ]);
 });
 
-Route::get('/cosct', function () {
-    return view('cosct', [
-        "title" => "cosct"
-    ]);
-});
+
 Route::get('/report', function () {
     return view('report', [
         "title" => "report"
@@ -69,31 +104,7 @@ Route::get('/formpembelian', function () {
         "title" => "formpembelian"
     ]);
 });
-Route::get('/cosctbiaya', function () {
-    return view('cosctbiaya', [
-        "title" => "cosctbiaya"
-    ]);
-});
-Route::get('/cosctgaji', function () {
-    return view('cosctgaji', [
-        "title" => "cosctgaji"
-    ]);
-});
-Route::get('/tambahsupplier', function () {
-    return view('tambahsupplier', [
-        "title" => "tambahsupplier"
-    ]);
-});
-Route::get('/formtambahkar', function () {
-    return view('formtambahkar', [
-        "title" => "formtambahkar"
-    ]);
-});
-Route::get('/formtambahsup', function () {
-    return view('formtambahsup', [
-        "title" => "formtambahsup"
-    ]);
-});
+
 Route::get('/formpenjualan', function () {
     return view('formpenjualan', [
         "title" => "formpenjualan"
